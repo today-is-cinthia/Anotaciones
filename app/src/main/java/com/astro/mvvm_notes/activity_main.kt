@@ -1,6 +1,5 @@
 package com.astro.mvvm_notes
 
-import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -13,9 +12,10 @@ import com.astro.mvvm_notes.ui.AnotacionAdapter
 import com.astro.mvvm_notes.ui.AnotacionViewModel
 import com.astro.mvvm_notes.ui.AnotacionViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.popup_add_new_item.*
 
 class activity_main : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,9 +27,13 @@ class activity_main : AppCompatActivity() {
         val viewModel = ViewModelProvider(this,factory).get(AnotacionViewModel::class.java)
 
         val adapter = AnotacionAdapter(listOf(),viewModel)
+        val adapterF = AnotacionAdapter(listOf(),viewModel)
 
         rvTareasPendientes.layoutManager = LinearLayoutManager(this)
         rvTareasPendientes.adapter = adapter
+
+        rvTareasFinalizadas.layoutManager = LinearLayoutManager(this)
+        rvTareasFinalizadas.adapter = adapterF
 
 
         viewModel.getAllTareas().observe(this, Observer {
@@ -38,21 +42,28 @@ class activity_main : AppCompatActivity() {
         })
 
         btnAgregar.setOnClickListener {
-            val popup = Dialog(this)
-            popup.setContentView(R.layout.popup_add_new_item)
-            popup.show()
-
-            popup.btnSave_popup.setOnClickListener {
-                val nName = popup.etName_popup.text.toString()
-
+            if(tvDescripcionTarea.text.toString().isNotBlank())
+            {
+                val nName = tvDescripcionTarea.text.toString()
                 viewModel.upsert(Anotacion(nName,false))
-                popup.dismiss()
+                tvDescripcionTarea.text?.clear()
+            }else
+            {
+                tvDescripcionTarea.error = getString(R.string.strValidacionError)
             }
-
 
         }
 
 
+    }
+
+}
+
+private fun addAnotacion(anotacion: Anotacion)
+{
+    if(anotacion.finalizado)
+    {
 
     }
 }
+

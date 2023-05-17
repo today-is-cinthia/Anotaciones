@@ -31,8 +31,7 @@
             android:layout_height="match_parent"
             android:imeOptions="actionDone"
             android:inputType="textCapCharacters"
-            android:maxLength="@integer/descripcion_maxlength"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:maxLength="@integer/descripcion_maxlength" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -59,21 +58,20 @@
         app:layout_constraintBottom_toTopOf="@+id/rvTareasPendientes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAgregar"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTareasPendientes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tvTituloFinalizadaas"
+        app:layout_constraintBottom_toTopOf="@+id/tvTituloFinalizadas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloPendiente"
         tools:listitem="@layout/item_notas" />
 
     <TextView
-        android:id="@+id/tvTituloFinalizadaas"
+        android:id="@+id/tvTituloFinalizadas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dimen1"
@@ -91,40 +89,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTituloFinalizadaas"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloFinalizadas"
         tools:listitem="@layout/item_notas" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity_main">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNotes"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>-->

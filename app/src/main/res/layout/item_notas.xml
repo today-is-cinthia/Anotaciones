@@ -30,11 +30,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="@string/strTarea"
         app:layout_constraintBottom_toBottomOf="@+id/ivDel"
         app:layout_constraintStart_toEndOf="@+id/ivDel"
-        app:layout_constraintTop_toTopOf="@+id/ivDel">
-    </TextView>
+        app:layout_constraintTop_toTopOf="@+id/ivDel"
+        tools:ignore="TextSizeCheck"
+        tools:text="@string/strTarea"></TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 <!--<androidx.constraintlayout.widget.ConstraintLayout

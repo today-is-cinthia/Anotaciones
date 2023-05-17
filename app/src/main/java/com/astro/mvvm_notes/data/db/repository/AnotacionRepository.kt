@@ -19,4 +19,5 @@ private val db:AnotacionRoomDatabase
 
     //Select * FROM Anotacion
     fun getAllTareas() = db.getAnotacionDao().getAllTareas()
+
 }

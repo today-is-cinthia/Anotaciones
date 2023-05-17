@@ -1,11 +1,14 @@
 package com.astro.mvvm_notes.ui
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.astro.mvvm_notes.R
 import com.astro.mvvm_notes.data.db.Anotacion
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_notas.view.*
 
 //Adapter aloja el recycler view y lo vincula con sus metodos oncreate, onbind
@@ -38,20 +41,18 @@ class AnotacionAdapter(
                     currentNotesItem.finalizado = false
                 }
                 viewModel.upsert(currentNotesItem)
-
             }
-
             ivDel.setOnClickListener {
                 viewModel.delete(currentNotesItem)
             }
-
-
         }
 
-
     }
+
 
     override fun getItemCount(): Int {
         return tarea.size
     }
+
+
 }

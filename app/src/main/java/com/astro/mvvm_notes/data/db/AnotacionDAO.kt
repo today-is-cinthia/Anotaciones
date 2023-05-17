@@ -20,4 +20,6 @@ interface AnotacionDAO {
     @Query("SELECT * FROM Anotacion")
     //LiveData para ver fluidez en vivo de los datos de la lista
     fun getAllTareas() : LiveData<List<Anotacion>>
+
+
 }
