@@ -45,15 +45,14 @@ class AnotacionAdapter(
 
 
             ivDel.setOnClickListener {
-              /*  val builder = AlertDialog.Builder(this)
+              val builder = AlertDialog.Builder(it.context)
                     .setTitle("Desea eliminar?")
                     .setPositiveButton("Ok",{
-                            dialogInterface, i ->*/
+                            _, _ ->
                         viewModel.delete(currentNotesItem)
-                   /* })
+                    })
                     .setNegativeButton("Cancelar", null)
                 builder.create().show()
-*/
             }
         }
 
