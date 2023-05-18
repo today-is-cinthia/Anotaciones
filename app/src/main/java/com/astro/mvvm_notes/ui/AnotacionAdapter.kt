@@ -1,14 +1,14 @@
 package com.astro.mvvm_notes.ui
 
-import android.util.TypedValue
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.astro.mvvm_notes.R
+import com.astro.mvvm_notes.activity_main
 import com.astro.mvvm_notes.data.db.Anotacion
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_notas.view.*
 
 //Adapter aloja el recycler view y lo vincula con sus metodos oncreate, onbind
@@ -42,8 +42,18 @@ class AnotacionAdapter(
                 }
                 viewModel.upsert(currentNotesItem)
             }
+
+
             ivDel.setOnClickListener {
-                viewModel.delete(currentNotesItem)
+                val builder = AlertDialog.Builder(this)
+                    .setTitle("Desea eliminar?")
+                    .setPositiveButton("Ok",{
+                            dialogInterface, i ->
+                        viewModel.delete(currentNotesItem)
+                    })
+                    .setNegativeButton("Cancelar", null)
+                builder.create().show()
+
             }
         }
 

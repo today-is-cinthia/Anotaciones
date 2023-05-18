@@ -1,7 +1,9 @@
 package com.astro.mvvm_notes
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +13,9 @@ import com.astro.mvvm_notes.data.db.repository.AnotacionRepository
 import com.astro.mvvm_notes.ui.AnotacionAdapter
 import com.astro.mvvm_notes.ui.AnotacionViewModel
 import com.astro.mvvm_notes.ui.AnotacionViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_notas.*
 
 class activity_main : AppCompatActivity() {
 
@@ -57,13 +61,6 @@ class activity_main : AppCompatActivity() {
 
     }
 
-}
 
-private fun addAnotacion(anotacion: Anotacion)
-{
-    if(anotacion.finalizado)
-    {
-
-    }
 }
 
