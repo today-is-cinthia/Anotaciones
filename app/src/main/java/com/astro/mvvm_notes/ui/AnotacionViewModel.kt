@@ -5,6 +5,7 @@ import com.astro.mvvm_notes.data.db.Anotacion
 import com.astro.mvvm_notes.data.db.repository.AnotacionRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 // Un ViewModel actúa como un centro de comunicación entre el repositorio y la IU
@@ -30,5 +31,5 @@ class AnotacionViewModel(
         repository.delete(tarea)
     }
 
-    fun getAllTareas() = repository.getAllTareas()
+    fun getAllTareas(finalizado : Boolean) : Flow<List<Anotacion>> = repository.getAllTareas(finalizado)
 }

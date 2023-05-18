@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.astro.mvvm_notes.data.db.AnotacionRoomDatabase
 import com.astro.mvvm_notes.data.db.Anotacion
@@ -16,6 +17,8 @@ import com.astro.mvvm_notes.ui.AnotacionViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_notas.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class activity_main : AppCompatActivity() {
 
@@ -39,11 +42,23 @@ class activity_main : AppCompatActivity() {
         rvTareasFinalizadas.layoutManager = LinearLayoutManager(this)
         rvTareasFinalizadas.adapter = adapterF
 
+        //llenando listas
+        lifecycleScope.launch {
+            viewModel.getAllTareas(true).collect {
+                adapterF.tarea = it
+                adapterF.notifyDataSetChanged()
+            }
+        }
 
-        viewModel.getAllTareas().observe(this, Observer {
-            adapter.tarea = it
-            adapter.notifyDataSetChanged()
-        })
+        //llenando listas pendientes
+        lifecycleScope.launch {
+            viewModel.getAllTareas(false).collect {
+                adapter.tarea = it
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+
 
         btnAgregar.setOnClickListener {
             if(tvDescripcionTarea.text.toString().isNotBlank())

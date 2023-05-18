@@ -18,6 +18,6 @@ private val db:AnotacionRoomDatabase
     suspend fun update(tarea: Anotacion) = db.getAnotacionDao().update(tarea)
 
     //Select * FROM Anotacion
-    fun getAllTareas() = db.getAnotacionDao().getAllTareas()
+    fun getAllTareas(finalizado : Boolean) = db.getAnotacionDao().getAllTareas(finalizado)
 
 }
